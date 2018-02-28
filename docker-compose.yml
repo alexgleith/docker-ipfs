@@ -1,0 +1,17 @@
+version: "2"
+services:
+  ipfs:
+    image: ipfs/go-ipfs:latest
+    volumes:
+      - ./export:/export
+      - ./data:/data/ipfs
+    ports:
+      - 4001:4001
+      - 127.0.0.1:8080:8080
+      - 127.0.0.1:5001:5001
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
